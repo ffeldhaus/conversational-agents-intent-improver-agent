@@ -1,0 +1,62 @@
+{
+    "type": "object",
+    "description": "Schema for Training Phrase recommendations",
+    "properties": {
+        "recommendation": {
+            "type": "string",
+            "enum": ["retain", "rewrite", "delete"],
+            "description": "Recommendation how to proceed with the training phrase based on best practices"
+        },
+        "explanation": {
+            "type": "string",
+            "description": "Explanation of the recommendation how to proceed with the training phrase based on best practices"
+        },
+        "trainingPhrase": {
+            "type": "object",
+            "description": "Rewritten training phrase",
+            "properties": {
+                "parts": {
+                    "type": "array",
+                    "description": "List of parts in the training phrase",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "text": {
+                                "type": "string",
+                                "description": "Text of the part"
+                            },
+                            "parameterId": {
+                                "type": "string",
+                                "description": "ID of the parameter associated with this part"
+                            },
+                            "auto": {
+                                "type": "boolean",
+                                "description": "Whether the part was generated automatically"
+                            }
+                        },
+                        "required": [
+                            "text"
+                        ]
+                    }
+                },
+                "repeatCount": {
+                    "type": "integer",
+                    "description": "Number of times the phrase is repeated (value should be 1)"
+                },
+                "languageCode": {
+                    "type": "string",
+                    "description": "Language code of the phrase"
+                }
+            },
+            "required": [
+                "parts",
+                "repeatCount",
+                "languageCode"
+            ]
+        }
+    },
+    "required": [
+        "recommendation",
+        "explanation"
+    ]
+}

@@ -1,0 +1,55 @@
+{
+    "type": "object",
+    "description": "Schema for Dialogflow CX training phrases",
+    "properties": {
+        "trainingPhrases": {
+            "type": "array",
+            "description": "List of training phrases",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "parts": {
+                        "type": "array",
+                        "description": "List of parts in the training phrase",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "text": {
+                                    "type": "string",
+                                    "description": "Text of the part"
+                                },
+                                "parameterId": {
+                                    "type": "string",
+                                    "description": "ID of the parameter associated with this part"
+                                },
+                                "auto": {
+                                    "type": "boolean",
+                                    "description": "Whether the part was generated automatically"
+                                }
+                            },
+                            "required": [
+                                "text"
+                            ]
+                        }
+                    },
+                    "repeatCount": {
+                        "type": "integer",
+                        "description": "Number of times the phrase is repeated (value should be 1)"
+                    },
+                    "languageCode": {
+                        "type": "string",
+                        "description": "Language code of the phrase"
+                    }
+                },
+                "required": [
+                    "parts",
+                    "repeatCount",
+                    "languageCode"
+                ]
+            }
+        }
+    },
+    "required": [
+        "trainingPhrases"
+    ]
+}
